@@ -1,6 +1,6 @@
 <template>
-  <div style="top: 50px; position: relative">
-    <v-card>
+  <div>
+    <v-card class="px-8">
       <v-card-title data-cy="welcome">Welcome to dashboard!</v-card-title>
       <v-alert type="success" v-if="success">
         {{ successMsg }}
@@ -87,6 +87,10 @@ export default {
           .then((res) => {
             this.success = true
             this.successMsg = res.data.message
+            setTimeout(() => {
+              this.edit = false
+              this.success = false
+            }, 5000)
           })
           .catch((err) => {
             console.log(err)
